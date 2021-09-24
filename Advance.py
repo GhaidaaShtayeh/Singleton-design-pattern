@@ -38,7 +38,7 @@ class http(connection):
         # also pearent method can be called with help of super
     def release(self) : 
         print(self._instance)
-        #del connection._instance
+        del connection._instance
         print("died")
 
 class scp(connection):
