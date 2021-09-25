@@ -113,7 +113,7 @@ def main():
     scp1.send()
     print("--------------------------------------------------------")
     #second test case
-    print("b1 == a1 ??? ")
+    print("scp1 == http1 ??? ")
     if scp1 == http1:
         print("true")
     else : print("False")
