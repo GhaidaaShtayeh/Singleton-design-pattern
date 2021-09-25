@@ -20,10 +20,15 @@ class connection(object):
                 instances.append(cls._instance)
             return cls._instance
         else :
-            print("* Too many instances were created")
+            print("Too many instances were created")
         
     
     def release(self):
+        global count
+        instances.remove(self)
+        self._instance = None
+        count = count - 1
+        print("died")
         pass
     def send(self):
         pass
@@ -35,64 +40,27 @@ class http(connection):
     def send(self):
         print("sending my message via http" )
         pass
-        #do smthing unique for this class
-        # in this or other abstract method
-        # also pearent method can be called with help of super
-    def release(self) :
-        global count
-        instances.remove(self)
-        self._instance = None
-        count = count - 1
-        print("died")
+
 ##############################################################################################################
 class scp(connection):
     def send(self):
         print("sending my message via scp ")
         pass
-        
-    def release(self) :
-        global count 
-        count = count -1 
-        instances.remove(self)
-        self._instance = None
-        print("died")
 ###############################################################################################################
 class ssh(connection):
     def send(self):
         print("sending my message via ssh" )
         pass
-    
-    def release(self) :
-        global count 
-        count = count - 1 
-        instances.remove(self)
-        self._instance = None
-        print("died")
 ###############################################################################################################               
 class telnet(connection):
     def send(self):
         print("sending my message via telnet ")
         pass
-
-    def release(self) :
-        global count 
-        count = count -1
-        instances.remove(self)
-        self._instance = None
-        print("died")
 ##############################################################################################################
 class ftp(connection):
     def send(self):
         print("sending my message via ftp" )
         pass
-
-    def release(self) :
-        global count 
-        count = count - 1
-        instances.remove(self)
-        self._instance = None
-        print("died")
-
 ########################################### MAIN FUNCTION ############################################################
 def main():
     print("-------------------------MAIN AND SOME TEST CASES-------------------------------")
@@ -113,7 +81,7 @@ def main():
     scp1.send()
     print("--------------------------------------------------------")
     #second test case
-    print("scp1 == http1 ??? ")
+    print("* scp1 == http1 ??? ")
     if scp1 == http1:
         print("true")
     else : print("False")
